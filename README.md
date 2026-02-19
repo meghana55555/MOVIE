@@ -11,21 +11,24 @@ Front-end Netflix-style movie app + Registration/Login (BOOKY) per project specs
 ## Tech Stack
 
 - **Client**: React (Vite), React Router
-- **Server**: Node.js, Express, MySQL, bcrypt, JWT
+- **Server**: Node.js, Express, MongoDB (Atlas) via Mongoose, bcrypt, JWT
 - **API**: OMDB (proxy through server to keep API key secure)
 
 ## Setup
 
-### 1. Create MySQL Database
+### 1. MongoDB Atlas
 
-Create database `booky`. The **User** table is created automatically on server start. Or run `server/schema.sql` manually.
+- Create a free MongoDB Atlas cluster.
+- Create a database user (for example: `meghana` / `meghana123`).
+- Copy the connection string from Atlas and paste it into `MONGO_URL` in `.env`.
+- Set `DB_NAME=booky` (database name is created automatically on first write).
 
 ### 2. Server (backend)
 
 ```bash
 cd server
 cp .env.example .env
-# Edit .env with your MySQL and OMDB_API_KEY
+# Edit .env with your MongoDB URL and OMDB_API_KEY
 npm install
 npm run dev
 ```
@@ -51,9 +54,7 @@ npm run dev
 |---------------|------------------------------|
 | `OMDB_API_KEY`| OMDB API key (e.g. 6be3423a) |
 | `JWT_SECRET`  | Secret for JWT signing       |
-| `DB_HOST`     | MySQL host                   |
-| `DB_USER`     | MySQL user                   |
-| `DB_PASSWORD` | MySQL password               |
+| `MONGO_URL`   | MongoDB connection string    |
 | `DB_NAME`     | Database name (booky)        |
 
 ## Deploy to Vercel

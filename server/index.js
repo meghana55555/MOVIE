@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 
-const { pool, initDB } = require('./db');
+const { initDB } = require('./db');
 const authRoutes = require('./routes/auth');
 const moviesRoutes = require('./routes/movies');
 
